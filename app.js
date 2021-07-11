@@ -13,16 +13,19 @@ const app = Vue.createApp({
           title: 'name of the wind',
           author: 'patrick rothfuss',
           img: 'assets/1.jpeg',
+          isFav: true,
         },
         {
           title: 'the way of kings',
           author: 'brandon sanderson',
           img: 'assets/2.jpeg',
+          isFav: false,
         },
         {
           title: 'the final empire',
           author: 'brandon sanderson',
           img: 'assets/3.jpeg',
+          isFav: true,
         },
       ],
     };
@@ -41,6 +44,15 @@ const app = Vue.createApp({
       console.log(e);
       this.x = e.offsetX;
       this.y = e.offsetY;
+    },
+    boolChange(item) {
+      console.log(item);
+      item.isFav = !item.isFav;
+    },
+  },
+  computed: {
+    filteredBooks() {
+      return this.books.filter((book) => book.isFav);
     },
   },
 });
