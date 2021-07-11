@@ -20,6 +20,21 @@
     <h1>Hello Vue</h1>
 
     <div id="app">
+      <!-- これはできない -->
+      <a href="url">best website ever</a><br />
+
+      <!-- これはできない -->
+      <a href="{{url}}">best website ever</a><br />
+
+      <!-- Vueでアンカーにapp.jsからの値を入れる場合このようにバインドして使用しなければできない -->
+      <a v-bind:href="url">best website ever</a><br />
+
+      <!-- v-bind:hrefの略で:hrefでも同様の動作 -->
+      <a :href="url">best website ever</a>
+
+      <!-- これはダメ、コンパイルできないこのDOM以降の画面が真っ白になる -->
+      <!-- <a v-bind:href="{{ url }} ">best web site</a> -->
+
       <div v-if="showBooks">
         <!-- app.jsないの値出力して表示 -->
         <p>{{title}} - {{ author }} - {{ age }}</p>

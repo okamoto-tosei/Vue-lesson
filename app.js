@@ -7,6 +7,7 @@ const app = Vue.createApp({
       age: 45,
       x: 0,
       y: 0,
+      url: 'http://www.thenetninja.co.uk',
       books: [
         { title: 'name of the wind', author: 'patrick rothfuss' },
         { title: 'the way of kings', author: 'brandon sanderson' },
