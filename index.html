@@ -21,7 +21,21 @@
 
     <div id="app">
       <div v-if="showBooks">
+        <!-- app.jsないの値出力して表示 -->
         <p>{{title}} - {{ author }} - {{ age }}</p>
+        <p>{{ books[0].title}} - {{ books[0].author }}</p>
+
+        <!-- V4[mapで配列内のデータの表示と同じようなことを実行] -->
+        <ul>
+          <!-- item in book = itemはbooksから渡ってくるobjを格納する変数なのでbookやvalueなどの変数名でも可能 -->
+          <!-- item in book = in はitemをいれる公文なので変えるの不可 -->
+          <!-- item in book = booksはapp.jsに記述している配列のデータ名 -->
+          <li v-for="item in books">
+            <!-- item.titleのitemは、item in booksのitem部分と同じ  -->
+            <h3>{{ item.title }}</h3>
+            <p>{{ item.author }}</p>
+          </li>
+        </ul>
       </div>
       <button @click="toggleShowBooks">
         <span v-if="showBooks">Hide Books</span>
@@ -32,13 +46,17 @@
 
       <br />
       <!-- mouse events -->
-      <!-- v-on:mouseover or @mouseover  ※マウスがDOM要素ないに入った際に発火される-->
-      <div class="box" @mouseover="handleEvent">mouseover (enter)</div>
+      <!-- v-on:mouseover or @mouseover  ※マウスがDOM要素ないに入った際に発火される,eventだけを引数で受け取る場合eでいいが、
+        eventと他の引数を受け取る場合は$eventで明示的に受け取る必要がある-->
+      <div class="box" @mouseover="handleEvent($event,5)">
+        mouseover (enter)
+      </div>
       <!-- v-on:mouseleave or @mouseleave　※マウスがDOM要素から外れた時に発火される -->
       <div class="box" @mouseleave="handleEvent">mouseleave</div>
       <!-- v-on:dblclick or @dblclick ※ダブルクリック時に発火 -->
       <div class="box" @dblclick="handleEvent">double click</div>
-      <div class="box"></div>
+      <!-- mouseのDOM要素ないのX軸とY軸のイベントを受け取り表示する -->
+      <div class="box" @mousemove="handleMousemove">position - {{x}} {{y}}</div>
     </div>
 
     <script src="app.js"></script>
