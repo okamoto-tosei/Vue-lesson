@@ -47,6 +47,7 @@
           <!-- item in book = booksはapp.jsに記述している配列のデータ名 -->
           <li v-for="item in books">
             <!-- item.titleのitemは、item in booksのitem部分と同じ  -->
+            <img width="100" height="80" :src="item.img" :alt="item.title" />
             <h3>{{ item.title }}</h3>
             <p>{{ item.author }}</p>
           </li>
